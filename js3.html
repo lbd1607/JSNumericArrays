@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+Laura Davis CIS 370 
+JavaScript Program #3
+This program performs functions
+and commands on two  numeric arrays.
+-->
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JavaScript #2 Laura Davis</title>
+    
+<meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <style>
+        .button1{
+            background-color: magenta;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .button2{
+            background-color: blue;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        body{
+            background-color: bisque;
+        }
+    </style>
+    </head>
+    
+    <body>
+    <h1>A numeric array example</h1> 
+    <h2>Written by Laura Davis</h2>
+    <button class="button1" onclick="numArray()">Do you want to print the arrays?</button>
+        <br><br>
+    <button class="button2" onclick="numSort()">Do you want to sort the difference?</button>  
+    </body>
+    
+    <script>
+        /*Varible declarations and initializations */
+        var diff = [];
+        var avg = 0;
+        var avgDiff = [];
+        /*My first numeric array */
+        var arrayOne = [40, 35, 30, 25, 20];
+        /*My second numeric array */
+        var arrayTwo = [24, 21, 18, 15, 12];
+        /*arrayOne length saved into its own variable to be used in a for loop */
+    
+    /*The numPrint method is called by the event of pressing the first button.
+    This method pushes new values into both arrayOne and arrayTwo, respectively.
+    This method also contains a for loop that calculates the difference between the
+    two arrays. */    
+    function numArray(){
+        
+        /*Add three more values to arrayOne */
+        arrayOne.push(15, 10, 5);
+        
+        /*Add three more values to arrayTwo */
+        arrayTwo.push(9, 6, 3);
+        
+        /*oneLen has to be declared down here instead of at the top because the pushing of new values changes the length of the array */
+        var oneLen = arrayOne.length;
+
+        /*Calculates the differernce between the two arrays with a for loop*/
+        for(i = 0; i < oneLen; i++){
+            diff[i] = arrayOne[i] - arrayTwo[i];
+            }
+        
+        /*diffLen has to be declared down here after diff is initialized in the for loop. It will not work if declared at the top of the script */
+        var diffLen = diff.length;
+        /*Calculates the average difference between the two arrays */
+        for(x = 0; x < diffLen; x++){
+            avg += diff[x];
+        }
+        avgDiff = avg / diffLen;
+        
+        document.getElementById("firstArray").innerHTML = "The first array: " + arrayOne.join(", ");
+        document.getElementById("secondArray").innerHTML = "The second array: " + arrayTwo.join(", ");
+        document.getElementById("diffs").innerHTML = "The differences between the two arrays: " + diff.join(", ");
+        document.getElementById("average").innerHTML = "The average difference between the two arrays: " + avgDiff;
+    }
+    
+    /*The numSort method sorts the differences in arrayOne and arrayTwo.
+    The method uses a compare function to sort the numeric values correctly.
+    @param diff
+    */
+    function numSort(){
+        diff.sort(function(a, b) {return a - b});
+        document.getElementById("sorted").innerHTML = diff.join(", ");
+    }
+
+ 
+       
+    </script>
+    
+    <p id="firstArray"></p>
+    <p id="secondArray"></p>
+    <p id="diffs"></p>
+    <p id="average"></p>
+    <p id="sorted"></p>
+    
+</html>
